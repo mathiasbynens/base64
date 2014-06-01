@@ -1,4 +1,4 @@
-# base64 [![Build status](https://travis-ci.org/mathiasbynens/base64.svg?branch=master)](https://travis-ci.org/mathiasbynens/base64) [![Dependency status](https://gemnasium.com/mathiasbynens/base64.svg)](https://gemnasium.com/mathiasbynens/base64)
+# base64 [![Build status](https://travis-ci.org/mathiasbynens/base64.svg?branch=master)](https://travis-ci.org/mathiasbynens/base64) [![Code coverage status](http://img.shields.io/coveralls/mathiasbynens/base64/master.svg)](https://coveralls.io/r/mathiasbynens/base64) [![Dependency status](https://gemnasium.com/mathiasbynens/base64.svg)](https://gemnasium.com/mathiasbynens/base64)
 
 _base64_ is a robust base64 encoder/decoder that is fully compatible with [`atob()` and `btoa()`](http://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#atob), written in JavaScript. The base64-encoding and -decoding algorithms it uses are fully [RFC 4648](http://tools.ietf.org/html/rfc4648#section-4) compliant.
 

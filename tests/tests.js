@@ -76,6 +76,17 @@
 			'The string to be encoded contains characters outside of the Latin1 range.'
 		);
 		equal(
+			(function() {
+				try {
+					base64.encode('\u05E2\u05D1\u05E8\u05D9\u05EA');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'The string to be encoded contains characters outside of the Latin1 range.'
+		);
+		equal(
 			base64.encode('\xFF\xFF\xC0'),
 			'///A'
 		);
@@ -147,6 +158,17 @@
 			},
 			'The string to be encoded contains characters outside of the Latin1 range.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.encode('\uD800\uDC00');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'The string to be encoded contains characters outside of the Latin1 range.'
+		);
 	});
 
 	test('base64.decode', function() {
@@ -166,6 +188,17 @@
 			},
 			'Invalid character',
 			'Invalid character'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('YQ===');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'The string to be decoded is not correctly encoded.'
 		);
 		equal(
 			base64.decode('YQ=='),
@@ -240,10 +273,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcd===');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode(' abcd===');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode(' abcd===');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -252,16 +307,49 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcd=== ');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('abcd ===');
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcd ===');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('a');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('a');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
@@ -278,10 +366,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcde');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('\uD800\uDC00');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('\uD800\uDC00');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -290,10 +400,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('=');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('==');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('==');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -302,10 +434,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('===');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('====');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -314,10 +468,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('=====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('a=');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('a=');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -326,10 +502,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('a==');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('a===');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('a===');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -338,16 +536,49 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('a====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('a=====');
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('a=====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('ab=');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('ab=');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
@@ -360,16 +591,49 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('ab===');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('ab====');
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('ab====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('ab=====');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('ab=====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
@@ -382,10 +646,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abc==');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('abc===');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abc===');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -394,10 +680,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abc====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('abc=====');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abc=====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -406,10 +714,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcd=');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('abcd==');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcd==');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -418,10 +748,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcd===');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('abcd====');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcd====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -430,10 +782,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcd=====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('abcde=');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcde=');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -442,10 +816,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcde==');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('abcde===');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcde===');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -454,10 +850,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcde====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('abcde=====');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcde=====');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -466,10 +884,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('=a');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('=a=');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('=a=');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -478,10 +918,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('a=b');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('a=b=');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('a=b=');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -490,10 +952,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('ab=c');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('ab=c=');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('ab=c=');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -502,10 +986,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abc=d');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('abc=d=');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abc=d=');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
@@ -535,6 +1041,17 @@
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
+			(function() {
+				try {
+					base64.decode('ab\xA0cd');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
 			base64.decode('ab\t\n\f\r cd'),
 			'i\xB7\x1D'
 		);
@@ -550,6 +1067,17 @@
 			function() {
 				base64.decode('A');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('A');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
@@ -570,10 +1098,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('////A');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('/');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('/');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
@@ -591,6 +1141,17 @@
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
+			(function() {
+				try {
+					base64.decode('AAAA/');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
 			base64.decode('AAA/'),
 			'\0\0?'
 		);
@@ -600,10 +1161,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('\0');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode('\0nonsense');
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode('\0nonsense');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
@@ -612,10 +1195,32 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
+		equal(
+			(function() {
+				try {
+					base64.decode('abcd\0nonsense');
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
 		raises(
 			function() {
 				base64.decode(undefined);
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode(undefined);
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
@@ -629,6 +1234,17 @@
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
+			(function() {
+				try {
+					base64.decode(7);
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
 			base64.decode(12),
 			'\xD7'
 		);
@@ -636,6 +1252,17 @@
 			function() {
 				base64.decode(1.5);
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode(1.5);
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
@@ -649,11 +1276,22 @@
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
+			(function() {
+				try {
+					base64.decode(false);
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
 			base64.decode(NaN),
 			'5\xA3'
 		);
 		equal(
-			base64.decode(Infinity),
+			base64.decode(+Infinity),
 			'"w\xE2\x9E+r'
 		);
 		raises(
@@ -662,16 +1300,49 @@
 			},
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
-		raises(
-			function() {
-				base64.decode(0);
-			},
+		equal(
+			(function() {
+				try {
+					base64.decode(-Infinity);
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		raises(
 			function() {
-				base64.decode(0);
+				base64.decode(+0);
 			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode(+0);
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		raises(
+			function() {
+				base64.decode(-0);
+			},
+			'Invalid character: the string to be decoded is not correctly encoded.'
+		);
+		equal(
+			(function() {
+				try {
+					base64.decode(-0);
+				} catch (exception) {
+					return exception.name;
+				}
+			}()),
+			'InvalidCharacterError',
 			'Invalid character: the string to be decoded is not correctly encoded.'
 		);
 		equal(
