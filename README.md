@@ -1,6 +1,6 @@
 # base64 [![Build status](https://travis-ci.org/mathiasbynens/base64.svg?branch=master)](https://travis-ci.org/mathiasbynens/base64) [![Code coverage status](http://img.shields.io/coveralls/mathiasbynens/base64/master.svg)](https://coveralls.io/r/mathiasbynens/base64) [![Dependency status](https://gemnasium.com/mathiasbynens/base64.svg)](https://gemnasium.com/mathiasbynens/base64)
 
-_base64_ is a robust base64 encoder/decoder that is fully compatible with [`atob()` and `btoa()`](http://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#atob), written in JavaScript. The base64-encoding and -decoding algorithms it uses are fully [RFC 4648](http://tools.ietf.org/html/rfc4648#section-4) compliant.
+_base64_ is a robust base64 encoder/decoder that is fully compatible with [`atob()` and `btoa()`](https://html.spec.whatwg.org/multipage/webappapis.html#atob), written in JavaScript. The base64-encoding and -decoding algorithms it uses are fully [RFC 4648](https://tools.ietf.org/html/rfc4648#section-4) compliant.
 
 ## Installation
 
@@ -64,7 +64,7 @@ A string representing the semantic version number.
 
 ### `base64.encode(input)`
 
-This function takes a byte string (the `input` parameter) and encodes it according to base64. The input data must be in the form of a string containing only characters in the range from U+0000 to U+00FF, each representing a binary byte with values `0x00` to `0xFF`. The `base64.encode()` function is designed to be fully compatible with [`btoa()` as described in the HTML Standard](http://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#dom-windowbase64-btoa).
+This function takes a byte string (the `input` parameter) and encodes it according to base64. The input data must be in the form of a string containing only characters in the range from U+0000 to U+00FF, each representing a binary byte with values `0x00` to `0xFF`. The `base64.encode()` function is designed to be fully compatible with [`btoa()` as described in the HTML Standard](https://html.spec.whatwg.org/multipage/webappapis.html#dom-windowbase64-btoa).
 
 ```js
 var encodedData = base64.encode(input);
@@ -85,7 +85,7 @@ console.log(encoded);
 
 ### `base64.decode(input)`
 
-This function takes a base64-encoded string (the `input` parameter) and decodes it. The return value is in the form of a string containing only characters in the range from U+0000 to U+00FF, each representing a binary byte with values `0x00` to `0xFF`. The `base64.decode()` function is designed to be fully compatible with [`atob()` as described in the HTML Standard](http://www.whatwg.org/specs/web-apps/current-work/multipage/webappapis.html#dom-windowbase64-atob).
+This function takes a base64-encoded string (the `input` parameter) and decodes it. The return value is in the form of a string containing only characters in the range from U+0000 to U+00FF, each representing a binary byte with values `0x00` to `0xFF`. The `base64.decode()` function is designed to be fully compatible with [`atob()` as described in the HTML Standard](https://html.spec.whatwg.org/multipage/webappapis.html#dom-windowbase64-atob).
 
 ```js
 var decodedData = base64.decode(encodedData);
@@ -117,8 +117,8 @@ To generate the code coverage report, use `grunt cover`.
 
 | [![twitter/mathias](https://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](https://twitter.com/mathias "Follow @mathias on Twitter") |
 |---|
-| [Mathias Bynens](http://mathiasbynens.be/) |
+| [Mathias Bynens](https://mathiasbynens.be/) |
 
 ## License
 
-_base64_ is available under the [MIT](http://mths.be/mit) license.
+_base64_ is available under the [MIT](https://mths.be/mit) license.
