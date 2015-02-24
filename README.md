@@ -4,7 +4,7 @@ _base64_ is a robust base64 encoder/decoder that is fully compatible with [`atob
 
 ## Installation
 
-Via [npm](http://npmjs.org/):
+Via [npm](https://www.npmjs.com/):
 
 ```bash
 npm install base-64
@@ -28,7 +28,7 @@ In a browser:
 <script src="base64.js"></script>
 ```
 
-In [Narwhal](http://narwhaljs.org/), [Node.js](http://nodejs.org/), and [RingoJS](http://ringojs.org/):
+In [Narwhal](http://narwhaljs.org/), [Node.js](https://nodejs.org/), and [RingoJS](http://ringojs.org/):
 
 ```js
 var base64 = require('base-64');
