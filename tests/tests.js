@@ -186,7 +186,7 @@
 			function() {
 				base64.decode('YQ===');
 			},
-			'Invalid character',
+			/Invalid character/,
 			'Invalid character'
 		);
 		equal(
