@@ -23,7 +23,6 @@
 	},
 	"bugs": "https://github.com/mathiasbynens/base64/issues",
 	"files": [
-		"LICENSE-MIT.txt",
 		"base64.js"
 	],
 	"scripts": {
