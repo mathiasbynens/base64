@@ -10,6 +10,12 @@ Via [npm](https://www.npmjs.com/):
 npm install base-64
 ```
 
+Via [yarn](https://yarnpkg.com/):
+
+```bash
+yarn add base-64
+```
+
 Via [Bower](http://bower.io/):
 
 ```bash
