@@ -10,18 +10,6 @@ Via [npm](https://www.npmjs.com/):
 npm install base-64
 ```
 
-Via [Bower](http://bower.io/):
-
-```bash
-bower install base-64
-```
-
-Via [Component](https://github.com/component/component):
-
-```bash
-component install mathiasbynens/base64
-```
-
 In a browser:
 
 ```html
