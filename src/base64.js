@@ -91,7 +91,6 @@
 		var a;
 		var b;
 		var c;
-		var d;
 		var buffer;
 		// Make sure any padding is handled outside of the loop.
 		var length = input.length - padding;

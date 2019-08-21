@@ -27,7 +27,7 @@
 		"base64.js"
 	],
 	"scripts": {
-		"test": "node tests/tests.js"
+		"test": "mocha tests/tests.js"
 	},
 	"devDependencies": {
 		"coveralls": "^2.11.4",
@@ -35,9 +35,7 @@
 		"grunt-shell": "^1.1.2",
 		"grunt-template": "^0.2.3",
 		"istanbul": "^0.4.0",
-		"qunit-extras": "^1.4.4",
-		"qunitjs": "^1.20.0",
-		"regenerate": "^1.2.1",
-		"requirejs": "^2.1.22"
+		"mocha": "^6.2.0",
+		"regenerate": "^1.2.1"
 	}
 }
