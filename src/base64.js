@@ -123,7 +123,7 @@
       );
     } else if (padding == 1) {
       buffer = input.charCodeAt(position);
-      outputArray += (
+      outputArray.push(
         TABLE.charAt(buffer >> 2) +
         TABLE.charAt((buffer << 4) & 0x3F) +
         '=='
