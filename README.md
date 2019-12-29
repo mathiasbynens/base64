@@ -16,7 +16,7 @@ In a browser:
 <script src="base64.js"></script>
 ```
 
-In [Narwhal](http://narwhaljs.org/), [Node.js](https://nodejs.org/), and [RingoJS](http://ringojs.org/):
+In [Node.js](https://nodejs.org/), and [RingoJS](http://ringojs.org/):
 
 ```js
 var base64 = require('base-64');
