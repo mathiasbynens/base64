@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 				'command': 'istanbul cover --verbose --dir "coverage" "tests/tests.js" && coveralls < coverage/lcov.info; rm -rf coverage/lcov*'
 			},
 			'test-node': {
-				'command': 'echo "Testing in Node..."; node "tests/tests.js"'
+				'command': 'echo "Testing in Node..."; npm test'
 			},
 			'test-browser': {
 				'command': 'echo "Testing in a browser..."; open "tests/index.html"; open "tests/index.html?norequire=true"'
