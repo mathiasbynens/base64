@@ -20,6 +20,9 @@ In [Narwhal](http://narwhaljs.org/), [Node.js](https://nodejs.org/), and [RingoJ
 
 ```js
 var base64 = require('base-64');
+or
+import base64 from 'base-64';
+
 ```
 
 In [Rhino](http://www.mozilla.org/rhino/):
